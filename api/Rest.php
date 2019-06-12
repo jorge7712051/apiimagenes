@@ -12,7 +12,7 @@
 		private $_code = 200;
 		
 		public function __construct(){
-			$this->inputs();
+			//$this->inputs();
 		}
 		
 		public function get_referer(){
@@ -96,7 +96,7 @@
 		}		
 		
 		private function cleanInputs($data){
-			$clean_input = array();
+			/*$clean_input = array();
 			if(is_array($data)){
 				foreach($data as $k => $v){
 					$clean_input[$k] = $this->cleanInputs($v);
@@ -108,7 +108,7 @@
 				$data = strip_tags($data);
 				$clean_input = trim($data);
 			}
-			return $clean_input;
+			return $clean_input;*/
 		}		
 		
 		private function set_headers(){

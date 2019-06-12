@@ -10,7 +10,7 @@ class Imagenes extends Database
 	
 	public $NombreTabla='imagen';
 
-	function __construct(argument)
+	function __construct()
 	{
 		parent::__construct($DB='imagenes');
 	}
@@ -51,6 +51,16 @@ class Imagenes extends Database
         $ResultadoSQL = $this->pasarelaSql($ConsultaSQL,'assoc');  
         return $ResultadoSQL;
 	}
+
+
+     public function insertar($nombre,$ruta,$fecha) {
+        
+        $sql="INSERT INTO imagen (nombreimagen, rutaimagen, fecha) 
+        VALUES 
+        ('".$nombre."','".$ruta."','".$fecha."')";
+        
+        $this->inserdatos($sql);
+    }
 
 
 

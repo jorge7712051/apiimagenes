@@ -283,6 +283,12 @@ class DataBase {
         );
     }
 
+    protected function inserdatos($consulta) {
+         $GSent = $this->PDO->prepare($consulta);
+         $Respuesta = $GSent->execute();
+    }
+
+
 }
 
 ?>
