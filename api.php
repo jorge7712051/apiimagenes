@@ -7,10 +7,7 @@ require_once('./api/Rest.php');
 class API extends REST {
     
     private $buscarcontenido = null;
-    public function __construct() 
-    {
-        // Inicializa 
-    }
+   
 
     public function processApi() 
     {
@@ -21,46 +18,23 @@ class API extends REST {
             $this->response('', 404);
     }
 
-    private function BuscarImagen() 
+    
+    private function DescargarImagen() 
     {
-        if ($this->get_request_method() != "POST") {
+        if ($this->get_request_method() != "POST") 
+        {
             $this->response('', 406);
         }
-        
-        $Configuracion = array(
-            'loginuser' => $_POST['nombre'],           
-        );
-   
-        $ArchivoModelo= './api/modelos/'.$this->_request['modelo'].'.php';
+        $ArchivoModelo= './api/modelos/imagenes.php';
         if(file_exists($ArchivoModelo))
         {
             include $ArchivoModelo;
-            $this->Imagenes = new Imagenes($_POST['base']);
-            $datos = $this->Imagenes->Consulta($Configuracion );        
+            $this->Imagenes = new Imagenes();
+            $datos = $this->Imagenes->Consulta(array('nombreimagen' =>$_POST['nombre'] ) );        
             $this->response($this->json($datos), 200);
         }
-        else{
-            $this->response('', 405);
-        }
-        
-        //$error = array('status' => "Failed", "msg" => "Invalid Email address or Password");
-        //$this->response($this->json($error), 400);
-    }
-
-    private function getReporte() {
-        if ($this->get_request_method() != "POST") {
-            $this->response('', 406);
-        }
-
-        $ArchivoModelo= './api/modelos/'.$this->_request['modelo'].'.php';
-        if(file_exists($ArchivoModelo))
+        else
         {
-            include $ArchivoModelo;
-            $this->Reporte = new Reporte($_POST['base']);
-            $datos = $this->Cliente->ConsultaInventario($_POST['id_cliente'] );        
-            $this->response($this->json($datos), 200);
-        }
-        else{
             $this->response('', 405);
         }
     }
@@ -88,7 +62,7 @@ class API extends REST {
                     $Respuesta = array('error' =>$dest_path);
                      $this->response($this->json($Respuesta), 200);
                 } */
-             $ArchivoModelo= './api/modelos/imagenes.php';
+         $ArchivoModelo= './api/modelos/imagenes.php';
         if(file_exists($ArchivoModelo))
         {
             include $ArchivoModelo;

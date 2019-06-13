@@ -126,7 +126,7 @@ class DataBase {
         switch ($CampoTabla) {
            
             case 'nombreimagen':
-                $Filtro = $PreIndicardor . 'nombreimagen ' . ((is_array($Contenido)) ? "IN (" . implode(",", $Contenido) . ")" : " = " . $Contenido . "");
+                $Filtro = $PreIndicardor . 'nombreimagen ' . ((is_array($Contenido)) ? "IN (" . implode(",", $Contenido) . ")" : " = '" . $Contenido . "'");
                 break;
 
            

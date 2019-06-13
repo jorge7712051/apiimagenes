@@ -20,7 +20,7 @@ class Imagenes extends Database
 	{	
 		$ConfiguracionDefecto = array(
             'SELECT' => array(),
-            'id_cliente' => '',
+            'id_imagen' => '',
             'nombreimagen' =>'',
             'rutaimagen' =>'',
             'limit' => '',
@@ -47,7 +47,7 @@ class Imagenes extends Database
         ".((isset($OrdenarPor)) ? "ORDER BY ".$OrdenarPor : '')."                     
         ".((isset($Limite)) ? $Limite : '')."
         ";
-   
+      
         $ResultadoSQL = $this->pasarelaSql($ConsultaSQL,'assoc');  
         return $ResultadoSQL;
 	}
